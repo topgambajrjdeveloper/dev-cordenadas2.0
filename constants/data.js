@@ -104,7 +104,7 @@ const userData = {
     },
   ],
   resumeUrl:
-    "https://drive.google.com/file/d/1xmE3BOmgM7TAOOgVp36xQIQvYDntDYoo/view?usp=sharing",
+    "https://drive.google.com/file/d/1Z6FpSQNkmDwM9Hv0jpJkESmgLmWtOMMJ/view?usp=sharing",
   socialLinks: {
     instagram: "https://instagram.com/",
     twitter: "https://twitter.com/DCordenadas",
