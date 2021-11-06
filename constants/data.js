@@ -106,11 +106,9 @@ const userData = {
   resumeUrl:
     "https://drive.google.com/file/d/1Z6FpSQNkmDwM9Hv0jpJkESmgLmWtOMMJ/view?usp=sharing",
   socialLinks: {
-    instagram: "https://instagram.com/",
     twitter: "https://twitter.com/DCordenadas",
     linkedin: "https://linkedin.com/in/julianrodriguezjimenez",
     github: "https://github.com/topgambajrjdeveloper",
-    facebook: "https://facebook.com/",
   },
 };
 
