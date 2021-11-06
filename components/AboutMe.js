@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import es from "../locales/es";
 import en from "../locales/en";
 
-export default function AboutMe() {
+function AboutMe({ title, parafo_one, parafo_two, parafo_three, cv, pila_image}) {
   const router = useRouter();
   const { locale } = router;
   const t = locale === 'es' ? es : en;
@@ -130,17 +130,16 @@ export default function AboutMe() {
           </div>
           {/* Text area */}
           <div className="col-span-1 md:col-span-2">
-            <p className="text-xl text-gray-700 mb-4 dark:text-gray-300 ">
-              {t.desc1}
-            </p>
-            <p className="text-xl text-gray-700 mb-4 dark:text-gray-300 ">
-              {t.desc2}
-            </p>
-            <p className="text-xl text-gray-700 mb-4 dark:text-gray-300 ">
-              {t.desc3}
-            </p>
-
-
+           
+              <p className="text-xl text-gray-700 mb-4 dark:text-gray-300 ">
+                {parafo_one}
+              </p>
+              <p className="text-xl text-gray-700 mb-4 dark:text-gray-300 ">
+                {parafo_two}
+              </p>
+              <p className="text-xl text-gray-700 mb-4 dark:text-gray-300 ">
+                {parafo_three}
+              </p>          
             <h1 className="bg-red-500 text-3xl rounded-md px-2 py-1 inline-block font-bold text-gray-50">
               {t.pila}
             </h1>
@@ -188,3 +187,13 @@ export default function AboutMe() {
     </section>
   );
 }
+export async function getStaticProps() {
+  const api = await fetch('http://127.0.0.1:8000/api/about-me/about/')
+  const posts = await api.json()
+  return {
+    props: {
+      posts
+    }
+  }
+}
+export default AboutMe

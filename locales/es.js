@@ -6,7 +6,7 @@ export default {
     //navigation
     name: 'Julián Rodríguez',
     designation:'Full-Stack Developer',
-    projects: 'Projectos',
+    projects: 'Proyectos',
     home: 'Inicio',
     experience: 'Experiencia',
     contact: 'Contacto',
