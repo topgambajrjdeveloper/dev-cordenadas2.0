@@ -5,6 +5,7 @@ class MyDocument extends Document {
         return (
             <Html>
                 <Head>
+                    <link rel="icon" href="/favicon-32x32.png"/>
                     <link rel="manifest" href="/manifest.json" />
                     <link rel="apple-touch-icon" href="/apple-touch-icon.png"></link>
                     <meta name="msapplication-TileColor" content="#da532c"/>
