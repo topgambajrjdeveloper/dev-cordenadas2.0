@@ -2,7 +2,7 @@ export default {
     //seo
     creado: 'Creado por',
     title: 'Julián Rodríguez - Desarrollador, Inventor, Programador',
-    description: 'Llevo varios años estudiando y practicando de forma autodidacta con varios lenguajes de programación, y estoy listo para aportar valor en el mundo laboral.',
+    description: 'Mi nombre es Julián Rodríguez, soy desarrollor junior de software freelance de aplicaciones y web. Madrid (España)',
     //navigation
     name: 'Julián Rodríguez',
     designation:'Full-Stack Developer',

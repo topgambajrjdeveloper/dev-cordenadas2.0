@@ -10,7 +10,7 @@ export default function ContainerBlock({ children, ...customMeta }) {
   const anio = Year.getFullYear();
   const meta = {
     title: "Julián Rodríguez - Full-Stack Developer Python ReactsJs",
-    description: `Llevo varios años estudiando y practicando de forma autodidacta con varios lenguajes de programación, y estoy listo para aportar valor en el mundo laboral. Me considero una persona pro-activa con dotes de dirección y gestión`,
+    description: `Mi nombre es Julián Rodríguez, soy desarrollor junior de software freelance de aplicaciones y web. Madrid (España)`,
     image: "/avatar_julian.png",
     type: "website",
     date: 2020 | { anio },

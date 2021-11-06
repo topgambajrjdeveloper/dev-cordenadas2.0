@@ -2,7 +2,7 @@ export default {
     //seo
     creado: 'Created by',
     title: 'Julián Rodríguez - Developer, Inventor, Programmer',
-    description: 'This is a template built specifically for my blog - Creating a developer portfolio that gets you a job.',
+    description: 'My name is Julián Rodríguez, I am a junior developer of freelance web and application software. Madrid Spain)',
     //navigation
     name: 'Julián Rodríguez',
     designation: 'Full-Stack Developer',
