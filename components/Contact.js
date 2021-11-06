@@ -108,7 +108,7 @@ export default function Contact() {
               </div>
             </div>
           </div>
-          <form className="form rounded-lg bg-white p-4 flex flex-col" method="POST">
+          <form className="form rounded-lg bg-white p-4 flex flex-col" method="POST" data-netlify="true">
             <label htmlFor="name" className="text-sm text-gray-600 mx-4">
               {" "}
               {t.nombre}
