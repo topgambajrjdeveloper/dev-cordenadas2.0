@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import userData from "@constants/data";
 import { useRouter } from 'next/router';
+import { useForm, ValidationError } from "@formspree/react";
 import es from "../locales/es";
 import en from "../locales/en";
 
@@ -49,51 +50,52 @@ export default function Contact() {
     return isValid;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM);
+  
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // let isValidForm = handleValidation();
 
-    let isValidForm = handleValidation();
+  //   // if (isValidForm) {
+  //   //   setButtonText("Sending");
+  //   //   const res = await fetch("/api/sendgrid", {
+  //   //     body: JSON.stringify({
+  //   //       email: email,
+  //   //       fullname: fullname,
+  //   //       subject: subject,
+  //   //       message: message,
+  //   //     }),
+  //   //     headers: {
+  //   //       "Content-Type": "application/json",
+  //   //     },
+  //   //     method: "POST",
+  //   //   });
 
-    if (isValidForm) {
-      setButtonText("Sending");
-      const res = await fetch("/api/sendgrid", {
-        body: JSON.stringify({
-          email: email,
-          fullname: fullname,
-          subject: subject,
-          message: message,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      });
+  //   //   const { error } = await res.json();
+  //   //   if (error) {
+  //   //     console.log(error);
+  //   //     setShowSuccessMessage(false);
+  //   //     setShowFailureMessage(true);
+  //   //     setButtonText("Send");
 
-      const { error } = await res.json();
-      if (error) {
-        console.log(error);
-        setShowSuccessMessage(false);
-        setShowFailureMessage(true);
-        setButtonText("Send");
-
-        // Reset form fields
-        setFullname("");
-        setEmail("");
-        setMessage("");
-        setSubject("");
-        return;
-      }
-      setShowSuccessMessage(true);
-      setShowFailureMessage(false);
-      setButtonText("Send");
-      // Reset form fields
-      setFullname("");
-      setEmail("");
-      setMessage("");
-      setSubject("");
-    }
-    console.log(fullname, email, subject, message);
-  };
+  //   //     // Reset form fields
+  //   //     setFullname("");
+  //   //     setEmail("");
+  //   //     setMessage("");
+  //   //     setSubject("");
+  //   //     return;
+  //   //   }
+  //   //   setShowSuccessMessage(true);
+  //   //   setShowFailureMessage(false);
+  //   //   setButtonText("Send");
+  //   //   // Reset form fields
+  //   //   setFullname("");
+  //   //   setEmail("");
+  //   //   setMessage("");
+  //   //   setSubject("");
+  //   // }
+  //   // console.log(fullname, email, subject, message);
+  // };
 
   return (
     <section>
@@ -164,7 +166,10 @@ export default function Contact() {
               </div>
             </div>
           </div>
-          <form className="form rounded-lg bg-white p-4 flex flex-col" onSubmit={handleSubmit}>
+          <form 
+          className="form rounded-lg bg-white p-4 flex flex-col" 
+          onSubmit={handleSubmit}
+          >
             <h1 className="text-2xl font-bold dark:text-gray-50">
             {t.message}
           </h1>
@@ -264,7 +269,8 @@ export default function Contact() {
             </button>
           </div>
           <div className="text-left">
-            {showSuccessMessage && (
+          
+            {state.succeeded && (
               <p className="text-green-500 font-semibold text-sm my-2">
                {t.gracias}
               </p>
