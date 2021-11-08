@@ -2,17 +2,17 @@
 "use strict";
 const nodemailer = require("nodemailer");
 
-
 export default function sendEmail(req, res) {
+  require('dotenv').config()
   let nodemailer = require('nodemailer')
   const transporter = nodemailer.createTransport({
+    port: 465,
     host: "smtp.gmail.com",
-    port: 587,
-    secure: false, // true for 465, false for other ports
     auth: {
       user: process.env.USERMAIL, // generated ethereal user
       pass: process.env.PASSWORD, // generated ethereal password
     },
+    secure: true, // true for 465, false for other ports
   });
   const mailData = {
     from: `"Dev-Cordenadas 👻" <${process.env.USERMAIL}>`, // sender address
