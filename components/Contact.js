@@ -24,6 +24,8 @@ export default function Contact() {
     fetch('/api/contact', {
       method: 'POST',
       headers: {
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept, Authorization",
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
