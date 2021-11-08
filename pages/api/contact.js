@@ -1,14 +1,14 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 "use strict";
-// const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
 
 
 export default function sendEmail(req, res) {
   let nodemailer = require('nodemailer')
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 465,
-    secure: true, // true for 465, false for other ports
+    port: 587,
+    secure: false, // true for 465, false for other ports
     auth: {
       user: process.env.USERMAIL, // generated ethereal user
       pass: process.env.PASSWORD, // generated ethereal password
