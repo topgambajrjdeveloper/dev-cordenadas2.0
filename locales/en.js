@@ -39,8 +39,16 @@ export default {
     //contact
     hablemos: "Get in touch, let's talk",
     complete: "Fill in the details and I'll get back to you as soon as possible",
-    nombre: 'Your name',
-    correo: 'Email',
+    nombre: 'Full name',
+    correo: 'E-mail',
+    asunto:'Subject',
     mensaje: 'Message',
+    errornombre:'Fullname cannot be empty.',
+    erroremail:'Email cannot be empty.',
+    errorcuerpo:'Subject cannot be empty.',
+    errormensaje:'Message body cannot be empty.',
+    gracias:'Thankyou! Your Message has been delivered.',
+    erroralenviar:'Oops! Something went wrong, please try again.',
     submit: 'Send Message',
+    message:'Send a message',
 };

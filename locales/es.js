@@ -39,10 +39,17 @@ export default {
     //contact
     hablemos: 'Ponte en contacto, hablemos',
     complete: 'Complete los detalles y me pondré en contacto con usted lo antes posible',
-    nombre: 'Tu nombre',
+    nombre: 'Nombre completo',
     correo: 'Correo electrónico',
+    asunto:'Asunto',
     mensaje: 'Mensaje',
+    errornombre:'El nombre completo no puede estar vacío.',
+    erroremail:'El correo electrónico no puede estar vacío.',
+    errorcuerpo:'El asunto no puede estar vacío.',
+    errormensaje:'El cuerpo del mensaje no puede estar vacío.',
+    gracias:'¡Gracias! Su mensaje ha sido entregado.',
+    erroralenviar:'¡UPS! Algo salió mal. Por favor, vuelva a intentarlo.',
     submit:'Enviar Mensaje',
-
+    message:'Enviar un mensaje',
 
 };
