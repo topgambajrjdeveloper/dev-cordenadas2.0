@@ -26,7 +26,6 @@ export default function Contact() {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept, Authorization",
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
