@@ -23,9 +23,11 @@ export default function Contact() {
     }
     fetch('/api/contact', {
       method: 'POST',
+      mode: 'cors',
       headers: {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Headers":"*",
+        'Access-Control-Allow-Credentials': true,
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
@@ -39,6 +41,8 @@ export default function Contact() {
         setEmail('')
         setBody('')
       }
+    }).catch(function(error) {
+      console.log('Hubo un problema con la petición Fetch:' + error.message);
     })
   }
   return (
