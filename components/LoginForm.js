@@ -5,6 +5,7 @@ import { loginApi } from "../pages/api/login";
 import es from "../locales/es";
 import en from "../locales/en";
 import { useFormik } from "formik";
+import { toast } from "react-toastify";
 import * as Yup from "yup";
 
 export default function LoginForm() {
@@ -17,10 +18,10 @@ export default function LoginForm() {
     onSubmit: async (formValue) => {
       try {
         const response = await loginApi(formValue);
-        console.log(response);
+        const { access } = response;
+        console.log(access);
       } catch (error) {
-        console.log("ERROR");
-        console.log(error);
+        toast.error(error.message);
       }
     }
   });

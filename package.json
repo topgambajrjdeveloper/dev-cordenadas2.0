@@ -21,6 +21,7 @@
     "react": "17.x",
     "react-dom": "17.x",
     "react-rough-notation": "^1.0.1",
+    "react-toastify": "^8.1.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {
