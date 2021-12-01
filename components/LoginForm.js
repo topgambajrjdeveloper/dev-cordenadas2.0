@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { loginApi } from "../pages/api/login";
 import es from "../locales/es";
 import en from "../locales/en";
 import { useFormik } from "formik";
@@ -13,9 +14,14 @@ export default function LoginForm() {
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: Yup.object(validationSchema()),
-    onSubmit: (formValue) => {
-      console.log("Email enviado");
-      console.log(formValue);
+    onSubmit: async (formValue) => {
+      try {
+        const response = await loginApi(formValue);
+        console.log(response);
+      } catch (error) {
+        console.log("ERROR");
+        console.log(error);
+      }
     }
   });
   return (
