@@ -7,8 +7,7 @@ import userData from "@constants/data";
 import { useRouter } from "next/router";
 import es from "../locales/es";
 import en from "../locales/en";
-
-
+import { ToastContainer } from "react-toastify";
 
 function Home({ repositories }) {
   const router = useRouter();
@@ -19,7 +18,18 @@ function Home({ repositories }) {
       <ContainerBlock title={t.title} description={t.description}>
         <Hero />
         <FavouriteProjects />
-        <LatestCode repositories={repositories} />        
+        <LatestCode repositories={repositories} />
+        <ToastContainer
+          position="bottom-center"
+          autoClose={5000}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </ContainerBlock>
     </>
   );
