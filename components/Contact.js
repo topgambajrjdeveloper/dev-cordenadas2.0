@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import userData from "@constants/data";
 import { useRouter } from 'next/router';
-import { useForm, ValidationError } from "@formspree/react";
 import es from "../locales/es";
 import en from "../locales/en";
 
@@ -11,18 +10,11 @@ export default function Contact() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   //   Form validation
-  const [errors, setErrors] = useState({});
-
-  //   Setting button text
-  const [buttonText, setButtonText] = useState("");
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [showFailureMessage, setShowFailureMessage] = useState(false);
-  
+  const [errors, setErrors] = useState({});  
   //i18N
   const router = useRouter();
   const { locale } = router;
   const t = locale === 'es' ? es : en;
-
   //isValidForm
   const handleValidation = () => {
     let tempErrors = {};
@@ -50,52 +42,32 @@ export default function Contact() {
     return isValid;
   };
 
-  const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORM);
-  
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // let isValidForm = handleValidation();
-
-  //   // if (isValidForm) {
-  //   //   setButtonText("Sending");
-  //   //   const res = await fetch("/api/sendgrid", {
-  //   //     body: JSON.stringify({
-  //   //       email: email,
-  //   //       fullname: fullname,
-  //   //       subject: subject,
-  //   //       message: message,
-  //   //     }),
-  //   //     headers: {
-  //   //       "Content-Type": "application/json",
-  //   //     },
-  //   //     method: "POST",
-  //   //   });
-
-  //   //   const { error } = await res.json();
-  //   //   if (error) {
-  //   //     console.log(error);
-  //   //     setShowSuccessMessage(false);
-  //   //     setShowFailureMessage(true);
-  //   //     setButtonText("Send");
-
-  //   //     // Reset form fields
-  //   //     setFullname("");
-  //   //     setEmail("");
-  //   //     setMessage("");
-  //   //     setSubject("");
-  //   //     return;
-  //   //   }
-  //   //   setShowSuccessMessage(true);
-  //   //   setShowFailureMessage(false);
-  //   //   setButtonText("Send");
-  //   //   // Reset form fields
-  //   //   setFullname("");
-  //   //   setEmail("");
-  //   //   setMessage("");
-  //   //   setSubject("");
-  //   // }
-  //   // console.log(fullname, email, subject, message);
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('Sending')
+    let data = {
+      name,
+      email,
+      message
+    }
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then((res) => {
+      console.log('Response received')
+      if (res.status === 200) {
+        console.log('Response succeeded!')
+        setSubmitted(true)
+        setName('')
+        setEmail('')
+        setBody('')
+      }
+    })
+  }
 
   return (
     <section>
@@ -249,7 +221,7 @@ export default function Contact() {
           )}
           <div className="flex flex-row items-center justify-start">
             <button
-              type="submit"
+              type="submit" onclick={handleSubmit}
               className="px-10 mt-8 py-2 bg-[#130F49] text-gray-50 font-light rounded-md text-lg flex flex-row items-center"
             >
               {t.submit}
@@ -267,19 +239,6 @@ export default function Contact() {
                 />
               </svg>
             </button>
-          </div>
-          <div className="text-left">
-          
-            {state.succeeded && (
-              <p className="text-green-500 font-semibold text-sm my-2">
-               {t.gracias}
-              </p>
-            )}
-            {showFailureMessage && (
-              <p className="text-red-500">
-                {t.erroralenviar}
-              </p>
-            )}
           </div>
           </form>
         </div>

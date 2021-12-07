@@ -1,8 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 "use strict";
-const nodemailer = require("nodemailer");
 
-export default function sendEmail(req, res) {
+export default function (req, res) {
   require('dotenv').config()
   let nodemailer = require('nodemailer')
   const transporter = nodemailer.createTransport({
