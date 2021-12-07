@@ -1,13 +1,25 @@
+import React, {  useEffect } from "react";
 import userData from "@constants/data";
-import React from "react";
 import { useRouter } from 'next/router';
+import useExperience from '../hooks/useExperience'
 import es from "../locales/es";
 import en from "../locales/en";
+import { map } from "lodash";
+import moment from "moment";
 
 export default function Experience() {
   const router = useRouter();
   const { locale } = router;
   const t = locale === 'es' ? es : en;
+
+
+  const { loading,
+    error,
+    experiencia,
+    getExperiencia } = useExperience()
+  useEffect(async () => { getExperiencia(); }, []);
+  console.log(experiencia);
+
   return (
     <section className="bg-white dark:bg-gray-800">
       <div className="max-w-6xl mx-auto h-48 bg-white dark:bg-gray-800">
@@ -18,17 +30,19 @@ export default function Experience() {
       <div className="bg-[#F1F1F1] dark:bg-gray-900 -mt-4">
         <div className="grid grid-cols-1 dark:bg-gray-900 max-w-xl mx-auto pt-20">
           {/* Experience card */}
-          {userData?.experience.map(({ title, desc, year, company, companyLink}, idx) => (
+          {map(experiencia, ({ title, desc, desde, hasta, company, companyLink}, idx) => (
             <>
-              <ExperienceCard
-                key={idx}
-                title={title}
-                desc={desc}
-                year={year}
-                company={company}
-                companyLink={companyLink}
-              />
-              {idx === userData.experience.length - 1 ? null : (
+              <div className="relative experience-card border p-4 rounded-md shadow-xl bg-white dark:bg-gray-800 z-10 mx-4">
+                <h1 className="absolute -top-10 md:-left-10 md:-top-10 text-4xl text-gray-400 font-bold dark:text-gray-800">
+                  {moment(desde).format("YYYY")}-{moment(hasta).format("YYYY")}
+                </h1>
+                <h1 className="font-semibold text-xl">{title}</h1>
+                <a href={companyLink} className="text-gray-500">
+                  {company}
+                </a>
+                <p className="text-gray-600 dark:text-gray-400 my-2">{desc}</p>
+              </div>
+              {idx === userData?.experience.length - 1 ? null : (
                 <div className="divider-container flex flex-col items-center -mt-2">
                   <div className="w-4 h-4 bg-green-500 rounded-full relative z-10">
                     <div className="w-4 h-4 bg-green-500 rounded-full relative z-10 animate-ping"></div>
@@ -44,11 +58,11 @@ export default function Experience() {
   );
 }
 
-const ExperienceCard = ({ title, desc, year, company, companyLink }) => {
+const ExperienceCard = ({ title, desc, desde, hasta, company, companyLink }) => {
   return (
     <div className="relative experience-card border p-4 rounded-md shadow-xl bg-white dark:bg-gray-800 z-10 mx-4">
-      <h1 className="absolute -top-10 md:-left-10 md:-top-10 text-4xl text-gray-200 font-bold dark:text-gray-800">
-        {year}
+      <h1 className="absolute -top-10 md:-left-10 md:-top-10 text-4xl text-gray-400 font-bold dark:text-gray-800">
+        {moment(desde).format("YYYY")}-{moment(hasta).format("YYYY")}        
       </h1>
       <h1 className="font-semibold text-xl">{title}</h1>
       <a href={companyLink} className="text-gray-500">

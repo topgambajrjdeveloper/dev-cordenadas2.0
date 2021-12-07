@@ -30,6 +30,7 @@ export default function ContainerBlock({ children, ...customMeta }) {
           rel="canonical"
           href={`https://dev-cordenadas.xyz${router.asPath}`}
         />
+        <link rel='manifest' href='/static/manifest.json' />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Julián Rodríguez" />
         <meta property="og:description" content={meta.description} />

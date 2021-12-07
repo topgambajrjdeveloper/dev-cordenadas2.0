@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev ",
     "build": "next build",
     "start": "next start"
   },
@@ -13,13 +13,18 @@
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+    "formik": "^2.2.9",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
     "next": "10.x",
     "next-pwa": "^5.4.0",
     "next-themes": "0.0.15",
     "nodemailer": "^6.7.0",
     "react": "17.x",
     "react-dom": "17.x",
-    "react-rough-notation": "^1.0.1"
+    "react-rough-notation": "^1.0.1",
+    "react-toastify": "^8.1.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "autoprefixer": "^10.3.1",

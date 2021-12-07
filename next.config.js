@@ -11,7 +11,7 @@ module.exports = withPWA({
         defaultLocale: 'en',
         domains: [
             {
-                domain: 'dev-cordenadas.xyz',
+                domain: 'localhost:3000',
                 defaultLocale: 'en',
                 http: true,
                 localeDetection: false,
