@@ -1,17 +1,17 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 "use strict";
+import nodemailer from "nodemailer";
 
-export default function (req, res) {
-  require('dotenv').config()
-  let nodemailer = require('nodemailer')
-  const transporter = nodemailer.createTransport({
+export default async function (req, res, callback) {
+  
+  const transporter = await nodemailer.createTransport({
     port: 465,
     host: "smtp.gmail.com",
+    secure: true, // true for 465, false for other ports
     auth: {
       user: process.env.USERMAIL, // generated ethereal user
       pass: process.env.PASSWORD, // generated ethereal password
     },
-    secure: true, // true for 465, false for other ports
   });
   const mailData = {
     from: `"Dev-Cordenadas 👻" <${process.env.USERMAIL}>`, // sender address
@@ -26,6 +26,16 @@ export default function (req, res) {
       console.log(err)
     else
       console.log(info)
-  })
-  res.status(200)
+  }, function (error, info) {
+    if (error) {
+      callback(error);
+    } else {
+      callback(null, {
+        statusCode: 200,
+        body: JSON.stringify({
+          'result': 'success'
+        })
+      });
+    }
+  });
 }

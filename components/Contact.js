@@ -42,18 +42,18 @@ export default function Contact() {
     return isValid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     console.log('Sending')
     let data = {
-      name,
+      fullname,
       email,
       message
     }
-    fetch('/api/contact', {
+    await fetch('/api/contact', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json, text/plain, */*',
+        accept: "Accept: application/json",
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
@@ -62,7 +62,7 @@ export default function Contact() {
       if (res.status === 200) {
         console.log('Response succeeded!')
         setSubmitted(true)
-        setName('')
+        setFullname('')
         setEmail('')
         setBody('')
       }
@@ -221,7 +221,7 @@ export default function Contact() {
           )}
           <div className="flex flex-row items-center justify-start">
             <button
-              type="submit" onclick={handleSubmit}
+              type="submit" onClick={handleSubmit}
               className="px-10 mt-8 py-2 bg-[#130F49] text-gray-50 font-light rounded-md text-lg flex flex-row items-center"
             >
               {t.submit}
