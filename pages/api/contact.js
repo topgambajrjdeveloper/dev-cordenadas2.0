@@ -2,7 +2,7 @@
 "use strict";
 import nodemailer from "nodemailer";
 
-export default async function (req, res, callback) {
+export default async function (req, res) {
   
   const transporter = await nodemailer.createTransport({
     port: 465,
@@ -26,16 +26,6 @@ export default async function (req, res, callback) {
       console.log(err)
     else
       console.log(info)
-  }, function (error, info) {
-    if (error) {
-      callback(error);
-    } else {
-      callback(null, {
-        statusCode: 200,
-        body: JSON.stringify({
-          'result': 'success'
-        })
-      });
-    }
-  });
+  })
+  res.status(200)
 }
