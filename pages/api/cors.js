@@ -1,9 +1,9 @@
-import cors from 'cors'
+import Cors from 'cors'
 import initMiddleware from '../../lib/init-middleware'
 // Initialize the cors middleware
-const cors = initMiddleware(
+const ors = initMiddleware(
   // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
-  cors({
+  Cors({
     // Only allow requests with GET, POST and OPTIONS
     methods: ['GET', 'POST', 'OPTIONS'],
   })
