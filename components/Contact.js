@@ -141,13 +141,13 @@ export default function Contact() {
           className="form rounded-lg bg-white p-4 flex flex-col" 
           onSubmit={handleSubmit}
           >
-            <h1 className="text-2xl font-bold dark:text-gray-50">
+            <h1 className="text-2xl font-bold dark:text-gray-50 dark:text-gray-900 ">
             {t.message}
           </h1>
 
           <label
             htmlFor="fullname"
-            className="text-gray-500 font-light mt-8 dark:text-gray-50"
+              className="dark:text-gray-50 dark:text-gray-900 font-light mt-8 "
           >
             {t.nombre}<span className="text-red-500 dark:text-gray-50">*</span>
           </label>
@@ -166,7 +166,7 @@ export default function Contact() {
 
           <label
             htmlFor="email"
-            className="text-gray-500 font-light mt-4 dark:text-gray-50"
+              className="dark:text-gray-50 dark:text-gray-900 font-light mt-4 "
           >
             {t.correo}<span className="text-red-500">*</span>
           </label>
@@ -185,7 +185,7 @@ export default function Contact() {
 
           <label
             htmlFor="subject"
-            className="text-gray-500 font-light mt-4 dark:text-gray-50"
+              className="dark:text-gray-50 dark:text-gray-900 font-light mt-4 "
           >
             {t.asunto}<span className="text-red-500">*</span>
           </label>
@@ -203,7 +203,7 @@ export default function Contact() {
           )}
           <label
             htmlFor="message"
-            className="text-gray-500 font-light mt-4 dark:text-gray-50"
+              className="dark:text-gray-50 dark:text-gray-900 font-light mt-4 "
           >
             {t.mensaje}<span className="text-red-500">*</span>
           </label>

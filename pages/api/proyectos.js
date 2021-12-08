@@ -1,5 +1,5 @@
 import { API_URL } from '../../utils/constants'
-require('dotenv').config()
+
 export async function getProjectsApi() {
     try {
         const url = `${API_URL}/api/projects/`;
